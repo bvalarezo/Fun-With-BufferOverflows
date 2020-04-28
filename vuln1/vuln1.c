@@ -13,7 +13,6 @@ int main(int argc, char* argv[]) {
   }
 
   strcpy(buf, argv[1]);
-  printf("%d\n", i);
   printf("Input: %s\n", buf);
   return 0;
 }

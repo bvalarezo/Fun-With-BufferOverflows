@@ -67,4 +67,8 @@ You should have a shell!
 ### Resources
 Thank you LiveOverflow
 
+https://www.youtube.com/watch?v=Xvh8FkczNUc
 
+https://www.youtube.com/watch?v=re4teYmSoXA
+
+https://youtu.be/oS2O75H57qU

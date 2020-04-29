@@ -25,7 +25,7 @@ The return address is offset by 268 bytes, the next 4 bytes **is** the return ad
 
 To get the return address, we can use GDB and anaylze what address on the stack is `char buf[256]`.
 
-At the time of this writeup, I got the address `0xbffff504` to the address at the beginning of the buffer. So, let this be the return address. 
+At the time of this writeup, I got the address `0xbffff504` as the address the return address is stored in the program.
 
 >Note: Be sure to disable ASLR!
 
@@ -37,7 +37,7 @@ and
 	
 	x/268x $esp
 
-To get the idea of memory on the stack. This can help us craft a return address, to hijack the program's executation into our payload.
+To get the idea of memory on the stack. This can help us craft a payload, to hijack the program's execution.
 
 `hack.py` is our python script that will launch the program with the malicious payload. 
 
@@ -60,7 +60,7 @@ See `hack.py` to see how we craft the payload. Also, we have to make sure that t
 
 To pop a shell, run this command.
 
-	./vuln1 `python hack.py`
+	./hack.py
 
 You should have a shell!
 

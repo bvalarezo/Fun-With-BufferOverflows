@@ -8,5 +8,43 @@ non-root shell. You can use any language you prefer for the exploit scripts.
 
 ## Files
 ```
-
+├── hw4.txt
+├── README.md
+├── vuln1
+│   ├── hack.py
+│   ├── Makefile
+│   ├── README.md
+│   ├── r.sh
+│   ├── vuln1
+│   └── vuln1.c
+├── vuln2
+│   ├── hack.py
+│   ├── Makefile
+│   ├── README.md
+│   ├── vuln2
+│   └── vuln2.c
+└── vuln3
+    ├── hack.py
+    ├── Makefile
+    ├── README.md
+    ├── r.sh
+    ├── vuln3
+    └── vuln3.c
 ```
+
+## Setup
+
+Disable ASLR!
+
+    echo 0 > /proc/sys/kernel/randomize_va_space
+
+Make sure to setuid to the binaries.
+
+  sudo chown root <vulnerable binary>
+  sudo chgrp root <vulnerable binary>
+  sudo chmod +s <vulnerable binary>
+  
+
+
+
+

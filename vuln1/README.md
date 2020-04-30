@@ -51,7 +51,7 @@ or
 
 PADDING + RET + NOP_SLED + SHELLCODE
 
-Where RET is an address in the NOP sled. Choosing the first format may cause the shellcode to get corrupted. This is because the stack pointer (ESP) will be a small amount of bytes away of the shellcode. If the shellcode has push or pop instructions, this can potentially corrupt the shell code can raise SIGSEGV.
+Where RET is an address in the NOP sled. Choosing the first format may cause the shellcode to get corrupted. This is because the stack pointer (ESP) will be a small amount of bytes away of the shellcode. If the shellcode has push or pop instructions, data will be pushed and popped by the stack pointer(remember, the stack grows downwards). This can potentially corrupt the shell code can raise SIGSEGV.
 To prevent this, the second format can place the shellcode away from the stack pointer (by placing it after the return address instead of before) and decrease the chance of getting corrupted.
 
 See `hack.py` to see how we craft the payload. Also, we have to make sure that the return address(`ret_addr`) is an address in the NOP sled. This can be toggled within the python script.

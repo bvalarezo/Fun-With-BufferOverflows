@@ -41,8 +41,7 @@ We no longer have the privilage to run arbitrary code on the stack, thanks to th
 
 Lets analyze the binary further.
 
-	ldd vuln2
- 
+	$ ldd vuln2
 ```
 	linux-gate.so.1 (0xb7fd5000)
 	libc.so.6 => /lib/i386-linux-gnu/libc.so.6 (0xb7dd3000)

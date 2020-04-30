@@ -25,7 +25,7 @@ The return address is offset by 268 bytes, the next 4 bytes **is** the return ad
 
 To get the return address, we can use GDB and anaylze what address on the stack is `char buf[256]`.
 
-At the time of this writeup, I got the address `0xbffff504` as the address the return address is stored in the program.
+At the time of this writeup, I got the address `0xbffff504` as the address that will point to our payload.
 
 >Note: Be sure to disable ASLR!
 

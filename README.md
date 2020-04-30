@@ -38,13 +38,18 @@ Each directory will include a Makefile and a README.md with the strategy.
 
 Disable ASLR!
 
-    echo 0 > /proc/sys/kernel/randomize_va_space
+    # echo 0 > /proc/sys/kernel/randomize_va_space
 
 Make sure to setuid to the binaries.
 
-      sudo chown root <vulnerable binary>
-      sudo chgrp root <vulnerable binary>
-      sudo chmod +s <vulnerable binary>
+    $ sudo chown root <vulnerable binary>
+    $ sudo chgrp root <vulnerable binary>
+    $ sudo chmod +s <vulnerable binary>
+      
+Change the default shell from 'dash' to 'zsh':
+
+    # rm /bin/sh
+    # ln -s /bin/zsh /bin/sh
   
 
 

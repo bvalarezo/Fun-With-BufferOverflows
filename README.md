@@ -32,6 +32,8 @@ non-root shell. You can use any language you prefer for the exploit scripts.
     └── vuln3.c
 ```
 
+Each directory will include a Makefile and a README.md with the strategy.
+
 ## Setup
 
 Disable ASLR!
@@ -44,7 +46,5 @@ Make sure to setuid to the binaries.
   sudo chgrp root <vulnerable binary>
   sudo chmod +s <vulnerable binary>
   
-
-
 
 

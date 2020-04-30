@@ -42,9 +42,9 @@ Disable ASLR!
 
 Make sure to setuid to the binaries.
 
-  sudo chown root <vulnerable binary>
-  sudo chgrp root <vulnerable binary>
-  sudo chmod +s <vulnerable binary>
+      sudo chown root <vulnerable binary>
+      sudo chgrp root <vulnerable binary>
+      sudo chmod +s <vulnerable binary>
   
 
 

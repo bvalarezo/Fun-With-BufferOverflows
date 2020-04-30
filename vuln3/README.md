@@ -41,7 +41,7 @@ We no longer have the privilage to run arbitrary code on the stack, thanks to th
 
 Lets analyze the binary further.
 
-	ldd vuln2
+	ldd vuln3
  
 ```
 	linux-gate.so.1 (0xb7fd5000)
@@ -54,7 +54,7 @@ Looks like we have libc, awesome. Lets find the addresses for `system(3)`, `/bin
 
 To find `/bin/sh`, we can use `gdb(1)`
 
-	gdb ./vuln2
+	gdb ./vuln3
 	break main
 	info proc mappings
 
@@ -63,11 +63,11 @@ process 12819
 Mapped address spaces:
 
         Start Addr   End Addr       Size     Offset objfile
-          0x400000   0x401000     0x1000        0x0 /home/kali/Documents/CSE363_hw4/vuln2/vuln2
-          0x401000   0x402000     0x1000     0x1000 /home/kali/Documents/CSE363_hw4/vuln2/vuln2
-          0x402000   0x403000     0x1000     0x2000 /home/kali/Documents/CSE363_hw4/vuln2/vuln2
-          0x403000   0x404000     0x1000     0x2000 /home/kali/Documents/CSE363_hw4/vuln2/vuln2
-          0x404000   0x405000     0x1000     0x3000 /home/kali/Documents/CSE363_hw4/vuln2/vuln2
+          0x400000   0x401000     0x1000        0x0 /home/kali/Documents/CSE363_hw4/vuln3/vuln3
+          0x401000   0x402000     0x1000     0x1000 /home/kali/Documents/CSE363_hw4/vuln3/vuln3
+          0x402000   0x403000     0x1000     0x2000 /home/kali/Documents/CSE363_hw4/vuln3/vuln3
+          0x403000   0x404000     0x1000     0x2000 /home/kali/Documents/CSE363_hw4/vuln3/vuln3
+          0x404000   0x405000     0x1000     0x3000 /home/kali/Documents/CSE363_hw4/vuln3/vuln3
         0xb7dd8000 0xb7df5000    0x1d000        0x0 /usr/lib/i386-linux-gnu/libc-2.30.so
         0xb7df5000 0xb7f47000   0x152000    0x1d000 /usr/lib/i386-linux-gnu/libc-2.30.so
         0xb7f47000 0xb7fb6000    0x6f000   0x16f000 /usr/lib/i386-linux-gnu/libc-2.30.so
